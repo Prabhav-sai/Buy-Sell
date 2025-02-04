@@ -9,7 +9,8 @@ const itemSchema = new mongoose.Schema({
     seller: { type: mongoose.Schema.Types.ObjectId, ref: "User" , required: true},
     // reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
     image: { type: String, required: true },
-});
+} , {timestamps: true}
+);
 
 const Item = mongoose.model("Item", itemSchema);
 

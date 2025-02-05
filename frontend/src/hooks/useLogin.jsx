@@ -26,7 +26,8 @@ export const useLogin = () => {
 
             navigate("/profile");  // Redirect to profile page
         } catch (error) {
-            setError(error.response.data.message);
+            // setError(error.response.data.message);
+            console.log("Error logging in:", error);
             setIsLoading(false);
         }
     };

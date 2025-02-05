@@ -17,11 +17,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StoreIcon from "@mui/icons-material/Store";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HomeIcon from "@mui/icons-material/Home";
-import { Link, useNavigate } from "react-router-dom";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import LogoutIcon from '@mui/icons-material/Logout';
+import ChatIcon from '@mui/icons-material/Chat';
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -30,9 +33,13 @@ const Navbar = () => {
 
   const navItems = [
     // { text: "Home", icon: <HomeIcon />, path: "/" },
+    { text: "Chatbot", icon: <ChatIcon />, path: "/chatbot" },
     { text: "Items", icon: <StoreIcon />, path: "/display_items" },
+    { text: "Orders", icon: <ReceiptLongIcon />, path: "/orders" },
+    { text: "Deliver", icon: <LocalShippingIcon />, path: "/deliver" },
     { text: "Cart", icon: <ShoppingCartIcon />, path: "/cart" },
-    { text: "Profile", icon: <AccountCircleIcon />, path: "/profile" }
+    { text: "Profile", icon: <AccountCircleIcon />, path: "/profile" },
+    { text: "Logout" , icon: <LogoutIcon/>, path: "/logout" }
   ];
 
   return (

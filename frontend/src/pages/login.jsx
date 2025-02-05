@@ -3,20 +3,29 @@ import axios from "axios";
 import { TextField, Button, Container, Typography, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin.jsx";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const { login, error, isLoading } = useLogin();
+  const [captcha, setCaptcha] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
+    if(!captcha){
+      alert("Captcha not verified");
+      return;
+    };
     e.preventDefault();
     await login(formData);
     console.log("login " + formData);
 
+  };
+  const Verifycaptha = (value) => {
+    setCaptcha(value);
   };
 
   return (
@@ -31,6 +40,10 @@ const Login = () => {
             Register
           </Link>
         </Typography>
+        <ReCAPTCHA
+        sitekey="6Lc63s0qAAAAAKSPSF91BuhfbUpZXTtldRl7jUnq"
+        onChange={Verifycaptha}
+        />
       </form>
       {error && <Typography color="error">{error}</Typography>}
     </Container>

@@ -19,7 +19,7 @@ export const verifyToken = async (req, res, next) => {
         const {_id} = jwt.verify(token, process.env.JWT_SECRET);
 
         const user_id = await User.findById({ _id }).select('_id');
-        console.log(_id);
+        // console.log(_id);
         // console.log(user_id);
         if (!user_id) {
             return res.status(404).json({ error: 'User not found' });

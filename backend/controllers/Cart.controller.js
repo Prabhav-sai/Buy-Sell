@@ -25,12 +25,15 @@ export const addItemToCart = async (req, res) => {
   // console.log(req.user_id);
     try {
       const { itemId } = req.body;
+      console.log(itemId);
         let user = await User.findById(req.user_id);
-        const item = await Item.findById(itemId);
+        const item = await Item.findById(itemId).populate('seller','_id');
         if (!item) {
             return res.status(404).json({ message: "Item not found" });
         }
-
+        if (item.seller._id.toString() === user._id.toString()) {
+          return res.status(400).json({ message: "You cannot add your own item to the cart" });
+        }
         user.cart.push(item);
         await user.save();
         res.status(200).json({ message: "Item added to cart successfully" });

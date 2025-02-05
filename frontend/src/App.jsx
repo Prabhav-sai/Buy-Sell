@@ -9,6 +9,10 @@ import Unprotected from "./layouts/Unprotected.jsx";
 import DisplayItems from "./pages/Display_items.jsx";
 import ItemPage from "./pages/itempage.jsx";
 import CartPage from "./pages/cartpage.jsx";
+import OrdersPage from "./pages/orders.jsx";
+import DeliverItemsPage from "./pages/delivery.jsx";
+import Logout from "./pages/logout.jsx";
+import Chatbot from "./pages/chatbot.jsx";
 
 const App = () => {
   console.log("App");
@@ -32,6 +36,10 @@ const App = () => {
             <Route path="/display_items" element={user ? <DisplayItems /> : <Navigate to='/login' />} />
             <Route path="/items/:itemId" element={user ? <ItemPage /> : <Navigate to='/login' />} />
             <Route path="/cart" element={user ? <CartPage /> : <Navigate to='/login' />} />
+            <Route path="/orders" element={user ? <OrdersPage /> : <Navigate to='/login' />} />
+            <Route path="/deliver" element={user ? <DeliverItemsPage /> : <Navigate to='/login' />} />
+            <Route path="/chatbot" element={user ? <Chatbot /> : <Navigate to='/login' />} />
+            <Route path="/logout" element={user ? <Logout /> : <Navigate to='/login' />} />
           </Route>
 
           <Route path="/" element={user ? <Navigate to='/profile' /> : <Navigate to='/login' />} />

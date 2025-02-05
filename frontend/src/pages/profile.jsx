@@ -170,6 +170,15 @@ const Profile = () => {
                             <Grid item xs={12} sx={{ mt: 2 }}>
                                 <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
                                     <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        onClick={() => setEditing(false)}
+                                        startIcon={<CancelIcon />}
+                                        size="large"
+                                    >
+                                        Cancel
+                                    </Button>
+                                    <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={handleUpdate}
@@ -178,15 +187,6 @@ const Profile = () => {
                                         sx={{ px: 4 }}
                                     >
                                         Save Changes
-                                    </Button>
-                                    <Button
-                                        variant="outlined"
-                                        color="secondary"
-                                        onClick={() => setEditing(false)}
-                                        startIcon={<CancelIcon />}
-                                        size="large"
-                                    >
-                                        Cancel
                                     </Button>
                                 </Box>
                             </Grid>

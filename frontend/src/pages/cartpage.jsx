@@ -8,6 +8,7 @@ const CartPage = () => {
   const { user } = useAuthContext();
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  // const [otp, setOtp] = useState(null);
 
   useEffect(() => {
     fetchCart();
@@ -39,7 +40,6 @@ const CartPage = () => {
       });
 
       if (response.status === 200) {
-        // Update the cart state after removal
         setCartItems((prevItems) => prevItems.filter(item => item._id !== itemId));
       }
     } catch (error) {
@@ -47,8 +47,34 @@ const CartPage = () => {
     }
   };
 
+  // const generateOtp = () => {
+  //   return Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit OTP
+  // };
+
   const handleCheckout = async () => {
-    alert("Yet to implement checkout");
+    try {
+      // const otpGenerated = generateOtp();
+      // setOtp(otpGenerated);
+
+      // const orders = cartItems.map(item => ({
+      //   // buyerId: user.id,
+      //   sellerId: item.seller._id,
+      //   itemId: item._id,
+      //   amount: item.price,
+      //   // otp: otpGenerated
+      // }));
+
+      const response = await axios.post("http://localhost:5000/api/orders/", { }, {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      });
+      alert("Orders placed successfully! OTPs: " + response.data.orders.map(o => `Order ${o.orderId}: ${o.otp}`).join("\n"));
+      setCartItems([]); // Clear the cart on the frontend
+      setTotalPrice(0);
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    }
   };
 
   return (
@@ -74,9 +100,10 @@ const CartPage = () => {
         ))}
       </Grid>
       <Typography variant="h5" style={{ marginTop: "20px" }}>Total: ₹{totalPrice}</Typography>
-      <Button variant="contained" color="primary" style={{ marginTop: "10px" }} onClick={() => handleCheckout()}>
+      <Button variant="contained" color="primary" style={{ marginTop: "10px" }} onClick={handleCheckout}>
         Checkout
       </Button>
+      {/* {otp && <Typography variant="h6" style={{ marginTop: "10px", color: "green" }}>Your OTP: {otp}</Typography>} */}
     </div>
   );
 };

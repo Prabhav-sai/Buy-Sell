@@ -21,11 +21,11 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#1976d2", padding: { xs: "6px", sm: "8px 16px" } }}>
+    <AppBar position="static" sx={{ backgroundColor: "#1976d2", padding: { xs: "6px", sm: "8px 16px" }, marginBottom: "20px" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         
         {/* Left Side: Menu Button */}
-        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ display: { xs: "block", md: "block" } }}>
+        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ display: { xs: "block", md: "none" } }}>
           <MenuIcon />
         </IconButton>
 
@@ -37,7 +37,7 @@ const Navbar = () => {
         </Typography>
 
         {/* Search Box */}
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             alignItems: "center",
@@ -63,7 +63,7 @@ const Navbar = () => {
           >
             Search
           </Button>
-        </Box>
+        </Box> */}
       </Toolbar>
     </AppBar>
   );

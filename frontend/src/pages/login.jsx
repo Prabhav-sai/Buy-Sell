@@ -27,7 +27,7 @@ const Login = () => {
         <TextField label="Password" type="password" name="password" onChange={handleChange} fullWidth />
         <Button type="submit" disabled={isLoading}>Login</Button>
         <Typography>If you don't have an account{" "}
-            <Link component={RouterLink} to="/login">
+            <Link component={RouterLink} to="/register">
                 Register
             </Link>
         </Typography>

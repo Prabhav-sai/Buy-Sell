@@ -1,14 +1,11 @@
 import express from "express";
-import User from "../models/user.model.js";
-import { verifyToken } from "../middleware/Auth.middleware.js";
+import User from "../models/User.model.js";
 
 const router = express.Router();
 
-router.use(verifyToken);
-
 router.get("/", async (req, res) => {
     try {
-        const user = await User.findById(req.user); // req.user is set in the middleware
+        const user = await User.findById(req.user_id); 
         res.status(200).json(user);
     } catch (error) {
         console.error(error);

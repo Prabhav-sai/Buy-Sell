@@ -16,7 +16,7 @@ export const useRegister = () => {
         try {
             const res = await axios.post("http://localhost:5000/api/auth/register", formData);
 
-            localStorage.setItem("user_token", res.data);  // Save token to localStorage
+            localStorage.setItem("user_token", JSON.stringify(res.data));  // Save token to localStorage
 
             dispatch({ type: "LOGIN", payload: res.data }); // update the global state of authcontext
 

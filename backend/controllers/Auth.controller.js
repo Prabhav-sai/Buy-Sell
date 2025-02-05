@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
+import User from "../models/User.model.js";
 
 const createToken = (_id) => {
-    const token = jwt.sign({_id}, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign({_id}, process.env.JWT_SECRET);
     return token;
 };
 

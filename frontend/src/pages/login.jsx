@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(formData);
-    console.log("login "+formData);
+    console.log("login " + formData);
 
   };
 
@@ -27,9 +27,9 @@ const Login = () => {
         <TextField label="Password" type="password" name="password" onChange={handleChange} fullWidth />
         <Button type="submit" disabled={isLoading}>Login</Button>
         <Typography>If you don't have an account{" "}
-            <Link component={RouterLink} to="/register">
-                Register
-            </Link>
+          <Link component={RouterLink} to="/register">
+            Register
+          </Link>
         </Typography>
       </form>
       {error && <Typography color="error">{error}</Typography>}

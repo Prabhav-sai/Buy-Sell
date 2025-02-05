@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from './useAuthcontext.jsx';
 
 export const useLogin = () => {
-    const[error, setError] = useState(null);
-    const[isLoading, setIsLoading] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();
     const navigate = useNavigate();
-    
+
     const login = async (formData) => {
         setIsLoading(true);
         setError(null);
@@ -23,7 +23,7 @@ export const useLogin = () => {
             dispatch({ type: "LOGIN", payload: res.data }); // update the global state of authcontext
 
             setIsLoading(false);
-            
+
             navigate("/profile");  // Redirect to profile page
         } catch (error) {
             setError(error.response.data.message);
@@ -31,5 +31,5 @@ export const useLogin = () => {
         }
     };
 
-    return { login , error, isLoading };
+    return { login, error, isLoading };
 };

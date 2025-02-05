@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const Protected = ({ children }) => {
-  return(
+  return (
     <div>
       <Navbar />
       <main>

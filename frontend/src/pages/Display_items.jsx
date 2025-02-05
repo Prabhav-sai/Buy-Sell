@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Grid, Card, CardContent, Typography, CircularProgress, Container, CardMedia,TextField,InputAdornment,Checkbox,FormControlLabel,FormGroup,Slider,Button,Paper,FormControl,FormLabel } from "@mui/material";
+import { Grid, Card, CardContent, Typography, CircularProgress, Container, CardMedia, TextField, InputAdornment, Checkbox, FormControlLabel, FormGroup, Slider, Button, Paper, FormControl, FormLabel } from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthcontext.jsx";
@@ -55,15 +55,15 @@ const DisplayItems = () => {
     const filtered = items.filter(item => {
       // Search filter (case-insensitive)
       const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       // Price filter
       const matchesPrice = item.price >= priceRange[0] && item.price <= priceRange[1];
-      
+
       // Category filter (any selected category match)
       const itemCategory = item.category?.toLowerCase() || '';
-      const matchesCategory = selectedCategories.size === 0 || 
-        Array.from(selectedCategories).some(cat => 
-          categories.includes(cat) && 
+      const matchesCategory = selectedCategories.size === 0 ||
+        Array.from(selectedCategories).some(cat =>
+          categories.includes(cat) &&
           itemCategory === cat
         );
 
@@ -183,17 +183,17 @@ const DisplayItems = () => {
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
               <Grid item key={item._id} xs={12} sm={6} md={4}>
-                <Card component={Link} to={`/items/${item._id}`} sx={{ 
-        height: '100%', 
-        display: 'flex', 
-        flexDirection: 'column',
-        textDecoration: 'none',
-        '&:hover': {
-          boxShadow: 3,
-          transform: 'translateY(-2px)',
-          transition: 'all 0.3s ease'
-        }
-      }}>
+                <Card component={Link} to={`/items/${item._id}`} sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    boxShadow: 3,
+                    transform: 'translateY(-2px)',
+                    transition: 'all 0.3s ease'
+                  }
+                }}>
                   <CardMedia
                     component="img"
                     height="200"

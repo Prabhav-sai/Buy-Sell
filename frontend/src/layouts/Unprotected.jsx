@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 const Unprotected = ({ children }) => {
-    return(
+    return (
         <div>
             <main>
                 <Outlet />

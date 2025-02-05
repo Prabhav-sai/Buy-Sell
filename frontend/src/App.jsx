@@ -13,12 +13,12 @@ import CartPage from "./pages/cartpage.jsx";
 const App = () => {
   console.log("App");
   const { user } = useAuthContext();
-  
+
   return (
     <div>
       {/* <div>hi</div> */}
-    <BrowserRouter>
-    <Routes>
+      <BrowserRouter>
+        <Routes>
           {/* Non-authenticated routes */}
           <Route element={<Unprotected />}>
             <Route path="/register" element={!user ? <Register /> : <Navigate to='/profile' />} />
@@ -28,15 +28,15 @@ const App = () => {
           {/* Authenticated routes */}
           <Route element={<Protected />}>
             <Route path="/profile" element={user ? <Profile /> : <Navigate to='/login' />} />
-            <Route path="/create_item" element={user ? <CreateItem/> : <Navigate to='/login' />} />
-            <Route path="/display_items" element={user ? <DisplayItems/> : <Navigate to='/login' />} />
-            <Route path="/items/:itemId" element={user ? <ItemPage/> : <Navigate to='/login' />} />
-            <Route path="/cart" element={user ? <CartPage/> : <Navigate to='/login' />} />
+            <Route path="/create_item" element={user ? <CreateItem /> : <Navigate to='/login' />} />
+            <Route path="/display_items" element={user ? <DisplayItems /> : <Navigate to='/login' />} />
+            <Route path="/items/:itemId" element={user ? <ItemPage /> : <Navigate to='/login' />} />
+            <Route path="/cart" element={user ? <CartPage /> : <Navigate to='/login' />} />
           </Route>
 
           <Route path="/" element={user ? <Navigate to='/profile' /> : <Navigate to='/login' />} />
         </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
     </div>
   )
 }

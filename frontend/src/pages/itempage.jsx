@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
-  Container, 
-  Typography, 
-  Card, 
-  CardMedia, 
-  CardContent, 
-  Button, 
+import {
+  Container,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Button,
   CircularProgress,
   Grid
 } from '@mui/material';
@@ -45,7 +45,7 @@ const ItemPage = () => {
   const handleAddToCart = async () => {
     alert('yet to handle cart');
     try {
-        const response = await axios.post(`http://localhost:5000/api/cart`, 
+      const response = await axios.post(`http://localhost:5000/api/cart`,
         { itemId },
         {
           headers: {
@@ -108,7 +108,7 @@ const ItemPage = () => {
             <Typography variant="subtitle2" color="textSecondary">
               Sold by: {item.seller?.email || 'Unknown Seller'}
             </Typography>
-            
+
             <Button
               variant="contained"
               size="large"

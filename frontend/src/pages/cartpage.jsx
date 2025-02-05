@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, CardMedia, Typography, Button, Grid , IconButton } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Button, Grid, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAuthContext } from "../hooks/useAuthcontext";
 
@@ -37,7 +37,7 @@ const CartPage = () => {
           Authorization: `Bearer ${user.token}`
         }
       });
-  
+
       if (response.status === 200) {
         // Update the cart state after removal
         setCartItems((prevItems) => prevItems.filter(item => item._id !== itemId));
@@ -66,7 +66,7 @@ const CartPage = () => {
                 <Typography variant="body2">Seller Name: {item.seller?.firstName} {item.seller?.lastName}</Typography>
                 <Typography variant="body2">Seller Email: {item.seller?.email}</Typography>
                 <IconButton onClick={() => handleRemove(item._id)} color="error">
-                    <DeleteIcon />
+                  <DeleteIcon />
                 </IconButton>
               </CardContent>
             </Card>
@@ -74,7 +74,7 @@ const CartPage = () => {
         ))}
       </Grid>
       <Typography variant="h5" style={{ marginTop: "20px" }}>Total: ₹{totalPrice}</Typography>
-      <Button variant="contained" color="primary" style={{ marginTop: "10px" }} onClick={()=>handleCheckout()}>
+      <Button variant="contained" color="primary" style={{ marginTop: "10px" }} onClick={() => handleCheckout()}>
         Checkout
       </Button>
     </div>

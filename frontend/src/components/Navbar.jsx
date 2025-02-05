@@ -2,7 +2,7 @@ import { AppBar, Toolbar, Typography, InputBase, Box, IconButton, Button } from 
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#1976d2", padding: { xs: "6px", sm: "8px 16px" }, marginBottom: "20px" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        
+
         {/* Left Side: Menu Button */}
         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ display: { xs: "block", md: "none" } }}>
           <MenuIcon />
@@ -31,9 +31,9 @@ const Navbar = () => {
 
         {/* Title */}
         <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: "bold", display: { xs: "none", md: "block" } }}>
-            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-                Buy-Sell @ IIITH
-            </Link>
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            Buy-Sell @ IIITH
+          </Link>
         </Typography>
 
         {/* Search Box */}

@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     const { history, prompt } = req.body;
     try {
-        const genAI = new GoogleGenerativeAI('AIzaSyBnuY37SFbaC0hmHU8Fij84tXrLrUqyo6E');
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const chat = model.startChat({ history });
         let result = await chat.sendMessage(prompt);

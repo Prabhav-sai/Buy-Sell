@@ -41,7 +41,7 @@ const Login = () => {
           </Link>
         </Typography>
         <ReCAPTCHA
-        sitekey="6Lc63s0qAAAAAKSPSF91BuhfbUpZXTtldRl7jUnq"
+        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
         onChange={Verifycaptha}
         />
       </form>

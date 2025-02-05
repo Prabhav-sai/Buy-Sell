@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema({
     seller: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     amount: { type: Number, required: true },
     otpHash: { type: String, required: true },
-    status: { type: Boolean, required: true },
+    completed_status: { type: Boolean, required: true },
 } , {timestamps: true}
 );
 

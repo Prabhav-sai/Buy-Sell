@@ -1,70 +1,117 @@
-import { AppBar, Toolbar, Typography, InputBase, Box, IconButton, Button } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  IconButton, 
+  Button,
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import StoreIcon from "@mui/icons-material/Store";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Navbar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const handleSearch = () => {
-    // onSearch(searchTerm);
-    navigate(`/search/${searchTerm}`);
-    setSearchTerm("");
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
-    }
-  };
+  const navItems = [
+    // { text: "Home", icon: <HomeIcon />, path: "/" },
+    { text: "Items", icon: <StoreIcon />, path: "/display_items" },
+    { text: "Cart", icon: <ShoppingCartIcon />, path: "/cart" },
+    { text: "Profile", icon: <AccountCircleIcon />, path: "/profile" }
+  ];
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#1976d2", padding: { xs: "6px", sm: "8px 16px" }, marginBottom: "20px" }}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-
-        {/* Left Side: Menu Button */}
-        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ display: { xs: "block", md: "none" } }}>
+    <AppBar position="static" sx={{ 
+      backgroundColor: "#1976d2", 
+      padding: { xs: "6px", sm: "8px 16px" },
+      marginBottom: "20px"
+    }}>
+      <Toolbar sx={{ 
+        display: "flex", 
+        justifyContent: "space-between", 
+        alignItems: "center",
+        gap: 2
+      }}>
+        {/* Mobile Menu Button */}
+        <IconButton 
+          edge="start" 
+          color="inherit" 
+          aria-label="menu" 
+          sx={{ display: { xs: "block", md: "none" } }}
+          onClick={handleDrawerToggle}
+        >
           <MenuIcon />
         </IconButton>
 
         {/* Title */}
-        <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: "bold", display: { xs: "none", md: "block" } }}>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            fontWeight: "bold", 
+            flexGrow: { xs: 1, md: 0 },
+            mr: { md: 4 }
+          }}
+        >
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             Buy-Sell @ IIITH
           </Link>
         </Typography>
 
-        {/* Search Box */}
-        {/* <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "white",
-            borderRadius: "8px",
-            padding: "4px 12px",
-            width: { xs: "70%", sm: "50%", md: "40%" }, // Responsive width
-          }}
-        >
-          <SearchIcon sx={{ color: "gray", mr: 1 }} />
-          <InputBase
-            placeholder="Search..."
-            sx={{ flexGrow: 1 }}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown} // Search on Enter key press
-          />
-          <Button
-            variant="contained"
-            size="small"
-            sx={{ ml: 1, textTransform: "none" }}
-            onClick={handleSearch}
-          >
-            Search
-          </Button>
-        </Box> */}
+        {/* Navigation Links (Desktop) */}
+        <Box sx={{ 
+          display: { xs: 'none', md: 'flex' }, 
+          gap: 2,
+          flexGrow: 1,
+          justifyContent: "flex-end"
+        }}>
+          {navItems.map(({ text, icon, path }) => (
+            <Button 
+              key={text}
+              color="inherit" 
+              component={Link} 
+              to={path}
+              sx={{ textTransform: 'none', display: "flex", alignItems: "center", gap: 1 }}
+            >
+              {icon} {text}
+            </Button>
+          ))}
+        </Box>
       </Toolbar>
+
+      {/* Sidebar Drawer for Mobile */}
+      <Drawer
+        anchor="left"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+      >
+        <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerToggle}>
+          <List>
+            {navItems.map(({ text, icon, path }) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton component={Link} to={path}>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
     </AppBar>
   );
 };

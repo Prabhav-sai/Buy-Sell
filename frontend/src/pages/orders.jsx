@@ -32,7 +32,7 @@ const OrdersPage = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/orders", {
+                const response = await axios.get("/api/orders", {
                     headers: { Authorization: `Bearer ${user.token}` },
                 });
                 setOrders(response.data);
@@ -49,7 +49,7 @@ const OrdersPage = () => {
     const handleGenerateOtp = async (orderId) => {
         try {
             const response = await axios.post(
-                "http://localhost:5000/api/orders/updateotp",
+                "/api/orders/updateotp",
                 { orderId },
                 { headers: { Authorization: `Bearer ${user.token}` } }
             );

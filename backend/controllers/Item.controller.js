@@ -33,7 +33,7 @@ export const GetItems = async (req, res) => {
 
         const items = await Item.find().populate("seller", "email");
         // items = items.filter(item => item.seller !== req.user_id);
-        console.log(items);
+        // console.log(items);
         res.status(200).json(items);
     } catch (error) {
         console.error(error);

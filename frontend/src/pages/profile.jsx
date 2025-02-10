@@ -33,7 +33,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/profile', {
+                const response = await axios.get('/api/profile', {
                     headers: {
                         Authorization: `Bearer ${user.token}`,
                     },
@@ -61,7 +61,7 @@ const Profile = () => {
 
     const handleUpdate = async () => {
         try {
-            await axios.put("http://localhost:5000/api/profile", formData, {
+            await axios.put("/api/profile", formData, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },

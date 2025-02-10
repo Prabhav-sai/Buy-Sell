@@ -15,7 +15,7 @@ import Logout from "./pages/logout.jsx";
 import Chatbot from "./pages/chatbot.jsx";
 
 const App = () => {
-  console.log("App");
+  // console.log("App");
   const { user } = useAuthContext();
 
   return (

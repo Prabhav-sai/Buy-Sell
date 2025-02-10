@@ -14,7 +14,7 @@ export const useLogin = () => {
         setError(null);
 
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+            const res = await axios.post("/api/auth/login", formData);
 
             // const response = JSON.stringify(res.data);
 
@@ -27,6 +27,7 @@ export const useLogin = () => {
             navigate("/profile");  // Redirect to profile page
         } catch (error) {
             // setError(error.response.data.message);
+            alert("Failed to login. Please check your credentials and try again.");
             console.log("Error logging in:", error);
             setIsLoading(false);
         }

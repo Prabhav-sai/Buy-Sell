@@ -15,13 +15,13 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    if(!captcha){
-      alert("Captcha not verified");
-      return;
-    };
+    // if(!captcha){
+    //   alert("Captcha not verified");
+    //   return;
+    // };
     e.preventDefault();
     await login(formData);
-    console.log("login " + formData);
+    // console.log("login " + formData);
 
   };
   const Verifycaptha = (value) => {

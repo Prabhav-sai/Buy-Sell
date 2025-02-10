@@ -18,7 +18,7 @@ const Chatbot = () => {
     const [prompt, setPrompt] = useState('');
     const fetchAI = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/genai', { history, prompt },
+            const response = await axios.post('/api/genai', { history, prompt },
                 {
                     headers: { Authorization: `Bearer ${user.token}` },
                 }

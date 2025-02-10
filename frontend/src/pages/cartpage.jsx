@@ -16,7 +16,7 @@ const CartPage = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cart", {
+      const response = await axios.get("/api/cart", {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setCartItems(response.data);
@@ -33,7 +33,7 @@ const CartPage = () => {
 
   const handleRemove = async (itemId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/cart/${itemId}`, {
+      const response = await axios.delete(`/api/cart/${itemId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`
         }
@@ -64,7 +64,7 @@ const CartPage = () => {
       //   // otp: otpGenerated
       // }));
 
-      const response = await axios.post("http://localhost:5000/api/orders/", { }, {
+      const response = await axios.post("/api/orders/", { }, {
         headers: {
           Authorization: `Bearer ${user.token}`
         }

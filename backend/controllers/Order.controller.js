@@ -53,9 +53,9 @@ export const createOrders = async (req, res) => {
 export const getOrders = async (req, res) => {
     try {
         const userId = req.user_id;
-        console.log("orders: "+userId);
+        // console.log("orders: "+userId);
         const orders = await Order.find({$or: [{ buyerId: userId }, { sellerId: userId }]}).populate("itemId").populate("sellerId").populate("buyerId");
-        console.log(orders);
+        // console.log(orders);
         res.status(200).json(orders);
     } catch (error) {
         console.error("Error fetching orders:", error);

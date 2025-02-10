@@ -25,7 +25,7 @@ const ItemPage = () => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/items/${itemId}`, {
+        const response = await axios.get(`/api/items/${itemId}`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -44,9 +44,9 @@ const ItemPage = () => {
   }, [itemId, user]);
 
   const handleAddToCart = async () => {
-    alert('yet to handle cart');
+    // alert('yet to handle cart');
     try {
-      const response = await axios.post(`http://localhost:5000/api/cart`,
+      const response = await axios.post(`/api/cart`,
         { itemId },
         {
           headers: {

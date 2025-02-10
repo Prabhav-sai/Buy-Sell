@@ -23,7 +23,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await register(formData);
-        console.log("register " + formData);
+        // console.log("register " + formData);
     };
 
     return (

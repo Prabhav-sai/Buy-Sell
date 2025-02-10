@@ -29,7 +29,7 @@ const DeliverItemsPage = () => {
         const fetchOrders = async () => {
             try {
                 // Fetch all orders for the user
-                const response = await axios.get("http://localhost:5000/api/orders", {
+                const response = await axios.get("/api/orders", {
                     headers: { Authorization: `Bearer ${user.token}` },
                 });
                 // Filter orders: only those where the current user is the seller and the order is not completed
@@ -38,7 +38,7 @@ const DeliverItemsPage = () => {
                         order.sellerId._id.toString() === user.user_details.id &&
                         !order.completed_status
                 );
-                console.log(response.data);
+                // console.log(response.data);
                 setOrders(pendingDeliveries);
             } catch (error) {
                 console.error("Error fetching orders:", error);
@@ -61,7 +61,7 @@ const DeliverItemsPage = () => {
         }
         try {
             await axios.post(
-                "http://localhost:5000/api/orders/verify",
+                "/api/orders/verify",
                 { orderId, otp: otpValue },
                 { headers: { Authorization: `Bearer ${user.token}` } }
             );

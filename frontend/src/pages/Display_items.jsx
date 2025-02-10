@@ -33,7 +33,7 @@ const DisplayItems = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/items", {
+      const response = await axios.get("/api/items", {
         headers: {
           "Authorization": `Bearer ${user.token}`,
         },

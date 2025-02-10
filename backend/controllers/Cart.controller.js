@@ -25,7 +25,7 @@ export const addItemToCart = async (req, res) => {
   // console.log(req.user_id);
     try {
       const { itemId } = req.body;
-      console.log(itemId);
+      // console.log(itemId);
         let user = await User.findById(req.user_id);
         const item = await Item.findById(itemId).populate('seller','_id');
         if (!item) {
